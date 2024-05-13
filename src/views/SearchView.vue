@@ -17,7 +17,7 @@
 
 <!--|== Scripts ================================================================================ -->
 <script setup>
-import { watchEffect } from 'vue'
+import { onMounted } from 'vue';
 import { useDefaultStore } from '@/store/DefaultStore';
 import { useRoute } from 'vue-router';
 import Search from '@/components/Search.vue';
@@ -25,11 +25,11 @@ import Thumbnail from '@/components/Thumbnail.vue';
 import Pagination from '@/components/Pagination.vue';
 
 const store = useDefaultStore();
-const route = useRoute()
+const route = useRoute();
 
-watchEffect(() => {
-  store.fetchMovies(route.params.id);
-})
+onMounted(() => {
+  store.fetchMoviesBySearch(route.params.name);
+});
 </script>
 
 <!--|== CSS ==================================================================================== -->
