@@ -17,17 +17,19 @@
 
 <!--|== Scripts ================================================================================ -->
 <script setup>
-import { ref, onMounted } from 'vue';
+import { onUpdated } from 'vue'
 import { useDefaultStore } from '@/store/DefaultStore';
+import { useRoute } from 'vue-router';
 import Search from '@/components/Search.vue';
 import Thumbnail from '@/components/Thumbnail.vue';
 import Pagination from '@/components/Pagination.vue';
 
 const store = useDefaultStore();
+const route = useRoute()
 
-onMounted(() => {
-  if (store.page != 1) store.fetchMovies();
-});
+onUpdated(() => {
+  store.fetchMovies(route.params.id);
+})
 </script>
 
 <!--|== CSS ==================================================================================== -->

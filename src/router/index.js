@@ -9,14 +9,14 @@ const routes = [
     component: () => import('@/views/HomePage.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import('@/views/AboutPage.vue')
+    path: '/page/:id',
+    name: 'Page',
+    component: () => import('@/views/PageView.vue')
   },
   {
-    path: '/style-guide',
-    name: 'StyleGuide',
-    component: () => import('@/views/StyleGuidePage.vue')
+    path: '/movie/:id',
+    name: 'Movie',
+    component: () => import('@/views/MovieDetails.vue')
   },
   {
     path: '/:catchAll(.*)',

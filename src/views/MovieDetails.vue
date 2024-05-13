@@ -1,24 +1,20 @@
 <!--|== Template =============================================================================== -->
 <template>
-  <nav class="nav">
-    <router-link :to="{ name: 'Home' }">Home</router-link>
-  </nav>
+  <section class="index"></section>
 </template>
 
 <!--|== Scripts ================================================================================ -->
-<script setup></script>
+<script setup>
+import Service from '@/services';
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
+
+const movie = await Service.getMovieById(route.params.id);
+</script>
 
 <!--|== CSS ==================================================================================== -->
 <style lang="scss">
-.nav {
-  width: 100%;
-  height: 50px;
-  background-color: $white;
-  color: $black;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
+.index {
 }
 </style>

@@ -1,33 +1,28 @@
 <!--|== Template =============================================================================== -->
 <template>
-  <div class="app">
-    <SiteHeader />
-    <Suspense>
-    <main>
-      <router-view />
-    </main>
-  </Suspense>
-    <SiteFooter />
-</div>
+  <div class="row">
+    <div class="twelve columns">
+      <label for="search">Search</label>
+      <input id="search" type="text" @keyup.enter="searchMovies" v-model="searchText">
+      <button id="submit" @click="searchMovies">Search</button>
+    </div>
+  </div>
 </template>
 
 <!--|== Scripts ================================================================================ -->
 <script setup>
-import SiteHeader from '@/components/SiteHeader.vue';
-import SiteFooter from '@/components/SiteFooter.vue';
+import { ref, onMounted } from 'vue';
 import { useDefaultStore } from '@/store/DefaultStore';
+
 const store = useDefaultStore();
 
-store.fetchMovies();
+var searchText = ref(null);
+
+async function searchMovies(event) {
+  store.fetchMoviesBySearch(searchText.value);
+};
 </script>
 
 <!--|== CSS ==================================================================================== -->
 <style lang="scss">
-.app {
-  flex: 1;
-  height: auto !important;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-}
 </style>
