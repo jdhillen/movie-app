@@ -9,7 +9,6 @@ export const useDefaultStore = defineStore('default', {
   state: () => {
     return {
       movies: {},
-      currentPage: 1,
       totalPages: 0,
     };
   },
@@ -17,18 +16,18 @@ export const useDefaultStore = defineStore('default', {
   // ==|== Actions =================================================================================
   actions: {
     async fetchMovies(page) {
-      const data = await Service.getMovies(page);
-      this.movies = data.data;
-      this.totalPages = data.totalPages;
+      const { data, totalPages } = await Service.getMovies(page);
+      this.movies = data;
+      this.totalPages = totalPages;
     },
 
     async fetchMoviesBySearch(text) {
-      this.movies = await Service.searchMovies(text);
+      this.movies = await Service.searchMoviesByName(text);
     },
 
-    setPage(page) {
-      this.page = page;
-    }
+    async fetchMoviesByGenre(text) {
+      this.movies = await Service.searchMoviesByGenre(text);
+    },
   },
 
   // ==|== Getters =================================================================================
@@ -44,11 +43,5 @@ export const useDefaultStore = defineStore('default', {
         return state.totalPages;
       }
     },
-
-    getCurrentPage: (state) => {
-      if (state.currentPage) {
-        return state.currentPage;
-      }
-    }
   }
 });

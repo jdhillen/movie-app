@@ -16,7 +16,7 @@ const routes = [
   {
     path: '/movie/:id',
     name: 'Movie',
-    component: () => import('@/views/MovieDetails.vue')
+    component: () => import('@/views/MovieDetailsView.vue')
   },
   {
     path: '/:catchAll(.*)',

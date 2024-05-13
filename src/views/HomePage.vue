@@ -2,6 +2,7 @@
 <template>
   <section class="home container">
     <Search/>
+    <Genre/>
     <Pagination :pages="store.totalPages"/>
     <div class="row">
       <div class="twelve columns">
@@ -20,6 +21,7 @@
 import { ref, onMounted } from 'vue';
 import { useDefaultStore } from '@/store/DefaultStore';
 import Search from '@/components/Search.vue';
+import Genre from '@/components/Genre.vue'
 import Thumbnail from '@/components/Thumbnail.vue';
 import Pagination from '@/components/Pagination.vue';
 

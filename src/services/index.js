@@ -15,32 +15,37 @@ const apiClient = axios.create({
 
 // ==|== Export ====================================================================================
 export default {
-  async getMovies(page=1, limit=20) {
+  async getMovies(page=1, limit=25) {
     try {
-      const response = await apiClient.request(`/movies?page=${page},limit=${limit}`);
-      return response.data;
+      const { data } = await apiClient.request(`/movies?page=${page},limit=${limit}`);
+      return data;
     } catch (error) {
       console.log(error);
     }
   },
 
-  async searchMovies(search="") {
+  async searchMoviesByName(search="") {
     try {
-      const response = await apiClient.request(`/movies?search=${search}`);
-      return response.data.data;
+      const { data } = await apiClient.request(`/movies?search=${search}`);
+      return data.data;
     } catch (error) {
       console.log(error);
     }
   },
 
-  searchGenre(genre="") {
-    return apiClient.get(`/movies?genre=${genre}`);
+  async searchMoviesByGenre(genre="") {
+    try {
+      const { data } = apiClient.get(`/movies?genre=${genre}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   },
 
   async getMovieById(id) {
     try {
-      const response = await apiClient.request(`/movies/${id}`);
-      return response.data;
+      const { data } = await apiClient.request(`/movies/${id}`);
+      return data;
     } catch (error) {
       console.log(error);
     }

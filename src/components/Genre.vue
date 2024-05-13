@@ -2,9 +2,9 @@
 <template>
   <div class="row">
     <div class="twelve columns">
-      <label for="search">Search by Name</label>
-      <input id="search" type="text" @keyup.enter="searchMovies" v-model="searchText">
-      <button id="submit" @click="searchMovies">Search</button>
+      <label for="search">Search by Genre</label>
+      <input id="search" type="text" @keyup.enter="searchGenres" v-model="text">
+      <button id="submit" @click="searchGenres">Search</button>
     </div>
   </div>
 </template>
@@ -16,10 +16,10 @@ import { useDefaultStore } from '@/store/DefaultStore';
 
 const store = useDefaultStore();
 
-var searchText = ref(null);
+var text = ref(null);
 
-async function searchMovies(event) {
-  store.fetchMoviesBySearch(searchText.value);
+async function searchGenres(event) {
+  store.fetchMoviesByGenre(text.value);
 };
 </script>
 
