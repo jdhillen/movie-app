@@ -21,23 +21,36 @@ Please take a look at the original repo to see that I did not use any previously
 ### Installing
 
 ##### clone the repo
+
+```
 git clone https://github.com/jdhillen/movie-app.git
+```
 
 ##### cd into the folder
+
+```
 cd movie-app
+```
 
 ##### setup .env
 Create a file in the root of the project that contains the following code.
+
 ```
 VITE_API_ENDPOINT=*API_ENDPOINT_GOES_HERE*
 VITE_AUTH_TOKEN=*AUTH_TOKEN_GOES_HERE*
 ```
 
 ##### install dependencies
+
+```
 npm install
+```
 
 ##### serve application at localhost
+
+```
 npm run dev
+```
 
 ---
 
